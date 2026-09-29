@@ -1,3 +1,11 @@
+</> Markdown
+
+## NFT Marketplace Platform
+
+🔗 **Live Demo:** [View Live Website](https://julius-internship-excellentgoldpear.vercel.app/)
+
+A React application that allows users to discover, explore, and view digital NFT collections.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
