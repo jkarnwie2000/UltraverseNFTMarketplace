@@ -5,6 +5,7 @@
 ![UltraverseNFT Marketplace Project](./ultraversenftmarketplaceproject.png)
 
 ## 🛠️ Tech Stack
+
 * React — User interface development
 * REST API — Communication with web services through REST endpoints
 
