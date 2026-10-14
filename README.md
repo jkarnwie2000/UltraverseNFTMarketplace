@@ -9,6 +9,12 @@
 * React — User interface development
 * REST API — Communication with web services through REST endpoints
 
+### 🚀 Key Features
+
+*  📚 NFT Collection Discovery: Explore and discover unique digital NFT collections through an engaging and user-friendly interface.
+*  ⚡ Responsive Design: Enjoy a seamless browsing experience across desktop, tablet, and mobile devices.
+*  🎯 Interactive NFT Gallery: View digital artwork and NFT collections with a clean, modern layout designed for easy navigation.
+
 ## NFT Marketplace Platform
 
 🔗 **Live Demo:** [View Live Website](https://julius-internship-excellentgoldpear.vercel.app/)
