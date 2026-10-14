@@ -25,33 +25,6 @@ A React application that allows users to discover, explore, and view digital NFT
 
 A React-based NFT Marketplace Platform designed to showcase digital collectibles, explore NFT collections, discover creators, and browse NFT-related content through a responsive user interface.
 
-## Tech Stack
-
-* **React.js** — Frontend user interface
-* **JavaScript (ES6+)** — Application logic
-* **Create React App** — Development environment and build tooling
-* **Axios** — HTTP requests to REST APIs
-* **React Router DOM** — Client-side navigation
-* **React Icons** — Icon components
-* **AOS** — Scroll animations
-* **React Slick & Slick Carousel** — Carousel components
-* **CSS & Bootstrap** — Styling and responsive layouts
-
-## Features
-
-* NFT marketplace landing page
-* NFT exploration interface
-* Featured collections and top sellers
-* Creator and author pages
-* NFT item details
-* Loading skeleton components
-* Responsive layouts and reusable UI components
-* REST API integration using Axios
-
-*Feature availability depends on the implementation of the individual components and API connections.*
-
----
-
 ## Prerequisites
 
 Before installing the project, ensure you have the following tools installed.
