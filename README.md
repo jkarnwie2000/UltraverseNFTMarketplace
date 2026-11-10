@@ -17,9 +17,18 @@
 * Vercel – hosting and deployment
 ### 🚀 Key Features
 
-*  📚 NFT Collection Discovery: Explore and discover unique digital NFT collections through an engaging and user-friendly interface.
-*  ⚡ Responsive Design: Enjoy a seamless browsing experience across desktop, tablet, and mobile devices.
-*  🎯 Interactive NFT Gallery: View digital artwork and NFT collections with a clean, modern layout designed for easy navigation.
+🔥 Hot Collections carousel: swipe through trending NFT collections
+🆕 New Items showcase: the latest NFTs with live auction countdowns
+⏳ Live countdown timers: real-time auction end times on items
+🏆 Top Sellers: highlights the best-performing creators
+🔍 Explore & filter: sort NFTs by price or likes
+👤 Author profiles: dynamic pages showing each creator's collection
+🖼️ Item details: full NFT info, owner, creator, and price
+🗂️ Browse by category: quick links into NFT categories
+💀 Skeleton loading: smooth placeholders while API data loads
+🌐 Live API data: content fetched from REST endpoints with Axios
+✨ Scroll animations: AOS effects as you scroll
+📱 Responsive design: works on desktop, tablet, and mobile
 
 ## NFT Marketplace Platform
 
