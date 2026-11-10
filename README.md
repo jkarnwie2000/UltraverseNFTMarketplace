@@ -6,9 +6,15 @@
 
 ## 🛠️ Tech Stack
 
-* React — User interface development.
-* REST API — Communication with web services through REST endpoints.
-
+* React 19 – component-based user interface
+* React Router – dynamic author and item pages
+* Axios – fetches live NFT API data
+* REST API – serves collections, items, and authors
+* React Slick – carousels for collections and items
+* AOS – animations triggered while scrolling
+* React Icons – lightweight icon library
+* Bootstrap / CSS – responsive layout and styling
+* Vercel – hosting and deployment
 ### 🚀 Key Features
 
 *  📚 NFT Collection Discovery: Explore and discover unique digital NFT collections through an engaging and user-friendly interface.
