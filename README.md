@@ -38,518 +38,415 @@ A React application that allows users to discover, explore, and view digital NFT
 
 # NFT Marketplace Platform Run Instructions
 
-A React-based NFT Marketplace Platform designed to showcase digital collectibles, explore NFT collections, discover creators, and browse NFT-related content through a responsive user interface.
+# Installation and Setup Guide
 
-## Prerequisites
+Follow these instructions to install, configure, and run the NFT Marketplace project locally on a Windows computer using Visual Studio Code.
 
-Before installing the project, ensure you have the following tools installed.
+## 1. Prerequisites
 
-### 1. Node.js and npm
+Before getting started, make sure the following software is installed.
 
-Install a compatible Node.js version from the official website:
+### Required Software
 
-https://nodejs.org/
+| Software | Required Version | Purpose |
+|---|---|---|
+| Node.js | 20.9 or higher | JavaScript runtime environment |
+| npm | Included with Node.js | Dependency and package management |
+| Visual Studio Code | Latest version | Code editor and development environment |
+| Git | Latest version | Source control and repository management |
 
-npm is included with Node.js.
+### Verify Your Installation
 
-Verify your installations:
+Open Windows Terminal, PowerShell, or the VS Code integrated terminal.
+
+Run the following commands:
 
 ```bash
-node -v
-npm -v
+node --version
 ```
 
-Both commands should display version numbers.
+Expected output:
 
-**Recommendation:** Use a Node.js version compatible with React 19 and Create React App 5. If you encounter dependency or compatibility errors, check the requirements of the installed packages.
+```bash
+v20.9.0
+```
 
-### 2. Git
+Check npm:
 
-Git is required to clone the repository. If you already have the project files, you can skip this requirement.
+```bash
+npm --version
+```
 
-Download Git:
-
-https://git-scm.com/
-
-Verify the installation:
+Check Git:
 
 ```bash
 git --version
 ```
 
-### 3. Visual Studio Code
+If these commands return version numbers, your development environment is ready.
 
-Visual Studio Code is recommended for opening, editing, and managing the project.
+## 2. Clone or Download the Project
 
-Download it here:
+If you are downloading the project from GitHub, open your terminal and navigate to the directory where you want to store your projects.
 
-https://code.visualstudio.com/
-
----
-
-## Installation and Setup
-
-Follow these steps to run the NFT Marketplace Platform on your local computer.
-
-### Step 1: Clone the Repository
-
-Open your terminal and run:
+Clone the repository:
 
 ```bash
-git clone https://github.com/jkarnwie2000/julius-internship.git
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
 Navigate into the project directory:
 
 ```bash
-cd julius-internship
+cd YOUR_PROJECT_FOLDER
 ```
 
-### Step 2: Install Dependencies
+Alternatively, download the repository as a ZIP file from GitHub and extract it to your preferred development directory.
 
-Install the dependencies specified in `package-lock.json`:
+## 3. Open the Project in Visual Studio Code
+
+From your project directory, execute:
+
+```bash
+code .
+```
+
+Alternatively:
+
+1. Open Visual Studio Code.
+2. Select **File → Open Folder**.
+3. Navigate to the extracted project directory.
+4. Select the project folder.
+5. Click **Select Folder**.
+
+The project should now appear in the VS Code Explorer.
+
+## 4. Install Project Dependencies
+
+This project includes a `package.json` and `package-lock.json` file.
+
+These files contain the project's dependency information and help ensure consistent package installations.
+
+Open the integrated VS Code terminal:
+
+**Terminal → New Terminal**
+
+Make sure the terminal is located in the project's root directory.
+
+Run:
+
+```bash
+npm install
+```
+
+This command installs the dependencies listed in `package.json` and restores the packages required to run the application.
+
+For subsequent installations where you want to use the exact dependency versions recorded in `package-lock.json`, run:
 
 ```bash
 npm ci
 ```
 
-This installs the project's dependencies without intentionally updating the existing lockfile.
+**Important:** Use `npm ci` when setting up a clean environment or installing dependencies in a CI/CD pipeline. It requires the lockfile to match `package.json` and replaces the existing `node_modules` directory.
 
-If `npm ci` fails because the lockfile is missing or inconsistent with `package.json`, run:
+## 5. Configure Environment Variables
 
-```bash
-npm install
-```
+Check the project root directory for the following files:
 
-Wait for the installation to finish before proceeding.
+- `.env`
+- `.env.example`
+- `.env.local`
 
-### Step 3: Start the Development Server
+No environment variable files were included in the supplied project structure.
 
-Run the following command:
+If the application does not require environment variables, you can skip this section.
 
-```bash
-npm start
-```
+If API credentials or external service configuration are required:
 
-Because this project uses Create React App, the command starts the React development server.
+1. Create a `.env` file in the project root.
+2. Add the required environment variables.
+3. Save the file.
+4. Restart the development server.
 
-Your browser should open automatically at:
-
-**http://localhost:3000**
-
-If it does not, enter that address in your browser.
-
-The development server automatically recompiles supported changes as you edit your source files.
-
-To stop the server, press `Ctrl + C` in the terminal.
-
----
-
-## Environment Variables
-
-The project uses Axios for HTTP requests, but its `package.json` does not specify which REST API endpoint the application uses.
-
-If your source code requires a configurable API URL, you can define it using an environment variable.
-
-### Step 1: Create a `.env` File
-
-Create a file named `.env` in the project root, alongside `package.json`.
+For a Create React App project, environment variables exposed to frontend code must begin with `REACT_APP_`.
 
 Example:
 
-```dotenv
-REACT_APP_API_BASE_URL=https://your-api.example.com
+```env
+REACT_APP_API_URL=https://your-api-endpoint.com
 ```
 
-Replace the example URL with your actual API endpoint.
-
-### Step 2: Access the Variable in React
-
-For this Create React App project, you can access the variable as follows:
+Access the variable in your React application using:
 
 ```javascript
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+process.env.REACT_APP_API_URL
 ```
 
-For example, if you use Axios:
+Never commit private API keys, passwords, or secret credentials to GitHub.
 
-```javascript
-import axios from "axios";
+Add `.env` to your `.gitignore` file if it is not already included.
 
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
-});
+**Note:** Only configure environment variables that the actual application requires. The example above is illustrative, not a confirmed project requirement.
 
-export default api;
-```
+## 6. Run the Application in Development Mode
 
-This example illustrates an optional API client configuration. Use it only if it matches your existing API implementation.
+After installing the dependencies, start the development server.
 
-### Step 3: Restart the Development Server
-
-If you create or modify `.env`, stop the running development server and restart it:
+For a standard Create React App configuration, execute:
 
 ```bash
 npm start
 ```
 
-### Environment Variable Notes
+This command starts the React development server.
 
-* Environment variables must use the `REACT_APP_` prefix to be exposed to Create React App application code.
-* A `.env` file is unnecessary if the application does not read environment variables.
-* Do not place passwords, private API keys, or other confidential secrets in frontend environment variables.
-* Add `.env` to `.gitignore` if it is not already excluded from version control.
-* If the API URL is already defined in the source code, update the existing configuration instead of creating a duplicate.
+Once the application compiles successfully, open your browser and navigate to:
 
----
-
-## Running the Application
-
-### Development Mode
-
-Use development mode when developing, testing, or debugging the application.
-
-```bash
-npm start
-```
-
-Open the local development address:
-
+```text
 http://localhost:3000
+```
 
-### Production Build
+The application should now be running locally.
 
-Create an optimized production build by running:
+### Automatic Reloading
+
+The development server supports automatic browser refreshing when you save changes to your React components, JavaScript files, or CSS stylesheets.
+
+For example, modifying:
+
+```text
+src/App.jsx
+```
+
+or:
+
+```text
+src/components/Nav.jsx
+```
+
+should trigger an update in the browser.
+
+**Important:** The `npm start` command assumes the project has a `start` script configured in `package.json`. Verify this before running it.
+
+## 7. Build the Application for Production
+
+When you are ready to prepare the application for deployment, execute:
 
 ```bash
 npm run build
 ```
 
-Your `package.json` defines the build script as:
-
-```json
-"build": "CI= react-scripts build"
-```
-
-This invokes the Create React App production build process.
-
-The generated production files will normally be placed in:
+For a standard Create React App project, this generates an optimized production build inside a directory named:
 
 ```text
 build/
 ```
 
-**Note:** The `CI=` prefix is shell-specific and is commonly used in Unix-like environments to clear the `CI` environment variable. If the build command fails in Windows Command Prompt or PowerShell, the environment-variable syntax may need to be adjusted.
+The production build contains optimized JavaScript, CSS, and other application assets.
 
-### Preview the Production Build
+You can then deploy the generated build directory to a compatible hosting provider.
 
-After successfully building the application, you can preview it using a static file server.
+## 8. Run and Debug the Project Using VS Code
 
-Install `serve` globally if it is not already installed:
+Visual Studio Code includes built-in JavaScript debugging capabilities.
+
+You can use these capabilities to troubleshoot React components, inspect variables, and identify errors.
+
+### Option A: Debug Using the Integrated Terminal
+
+1. Open the project in Visual Studio Code.
+2. Select **Terminal → New Terminal**.
+3. Execute:
 
 ```bash
-npm install -g serve
+npm start
 ```
 
-Run the production build:
-
-```bash
-serve -s build
-```
-
-Open the local URL displayed in your terminal.
-
-The `-s` option enables single-page application fallback behavior, which is useful for client-side routing.
-
-To stop the server, press `Ctrl + C`.
-
-**Important:** Running the production build locally does not deploy the application to the internet. To publish it, deploy the generated `build/` directory to a compatible static hosting provider.
-
----
-
-## Available npm Scripts
-
-The following commands are defined in your `package.json`.
-
-| Command         | Description                                    |
-| --------------- | ---------------------------------------------- |
-| `npm start`     | Starts the Create React App development server |
-| `npm run build` | Generates an optimized production build        |
-| `npm test`      | Starts the configured test runner              |
-| `npm run eject` | Exposes the underlying build configuration     |
-
-**Warning:** `npm run eject` is a one-way operation that copies the hidden Create React App configuration into your project. Most applications do not need to eject.
-
----
-
-## Project Structure
+4. Open the application in your browser.
+5. Open the browser's Developer Tools by pressing:
 
 ```text
-julius-internship/
-├── public/
-│   ├── images/
-│   │   ├── nft.png
-│   │   └── nft.webp
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
-├── src/
-│   ├── components/
-│   │   ├── author/
-│   │   ├── explore/
-│   │   ├── home/
-│   │   ├── UI/
-│   │   ├── Footer.jsx
-│   │   └── Nav.jsx
-│   ├── css/
-│   │   ├── colors/
-│   │   ├── fonts/
-│   │   └── styles/
-│   ├── images/
-│   ├── pages/
-│   ├── App.jsx
-│   ├── index.css
-│   ├── index.js
-│   └── reportWebVitals.js
-├── image-credits.txt
-├── package.json
-├── package-lock.json
-└── README.md
+F12
 ```
 
-### Key Directories
+6. Select the Console tab to inspect JavaScript errors and application warnings.
 
-* **`public/`** — Contains static assets served directly by the application.
-* **`src/components/`** — Contains reusable components for NFT listings, navigation, creators, and other interface sections.
-* **`src/pages/`** — Contains the main page-level components.
-* **`src/css/`** — Contains stylesheets, themes, fonts, and icon libraries.
-* **`src/images/`** — Contains images imported into React components.
-* **`package.json`** — Defines dependencies and npm scripts.
-* **`package-lock.json`** — Records the dependency tree used by npm.
-* **`image-credits.txt`** — Contains image attribution information.
+### Option B: Configure the VS Code Debugger
 
----
+If the project does not already contain a `.vscode` directory, create one in the project root.
 
-## Troubleshooting
+Inside `.vscode`, create a file named:
 
-### 1. `npm` Is Not Recognized
-
-**Cause:** Node.js may not be installed correctly or may not be available through your system's PATH.
-
-**Solution:**
-
-1. Install Node.js.
-2. Restart your terminal.
-3. Run:
-
-```bash
-node -v
-npm -v
+```text
+launch.json
 ```
 
-### 2. `npm ci` Fails
+Add the following configuration:
 
-**Cause:** The lockfile may be missing or inconsistent with `package.json`.
-
-**Solution:**
-
-Run:
-
-```bash
-npm install
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug React Application (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src"
+    }
+  ]
+}
 ```
 
-If installation succeeds, start the application:
+**Note:** This configuration requires a compatible Chrome debugging extension, such as Debugger for Chrome. Alternatively, use VS Code's built-in JavaScript debugger with a supported browser configuration.
+
+### Start Debugging
+
+1. Start the React development server:
 
 ```bash
 npm start
 ```
 
-### 3. `npm start` Fails
+2. Open the Run and Debug panel in VS Code.
+3. Select the `Debug React Application (Chrome)` configuration.
+4. Press `F5` to start debugging.
+5. Set breakpoints in your React components or JavaScript files.
+6. Interact with the application to inspect execution and troubleshoot issues.
 
-**Cause:** Dependencies may not be installed correctly.
+## 9. Useful Development Commands
+
+Here are some commonly used commands for maintaining the project.
+
+| Command | Description |
+|---|---|
+| `npm install` | Installs project dependencies |
+| `npm ci` | Performs a clean dependency installation |
+| `npm start` | Starts the development server |
+| `npm run build` | Generates an optimized production build |
+| `npm test` | Runs the configured test suite |
+| `npm run lint` | Runs the linting script, if configured |
+
+Not all commands are necessarily configured in this project. Check `package.json` before running optional scripts.
+
+## 10. Troubleshooting Common Issues
+
+### Issue 1: npm is not recognized
+
+**Possible cause:** Node.js is not installed correctly or has not been added to the Windows PATH environment variable.
 
 **Solution:**
 
-Run:
+1. Install or reinstall Node.js.
+2. Restart Visual Studio Code.
+3. Open a new terminal.
+4. Execute:
+
+```bash
+node --version
+npm --version
+```
+
+### Issue 2: Missing dependencies
+
+**Possible cause:** Dependencies have not been installed or the `node_modules` directory is incomplete.
+
+**Solution:**
 
 ```bash
 npm install
-npm start
 ```
 
-If the error persists, inspect the terminal output for missing dependencies, incompatible Node.js versions, or compilation errors.
+### Issue 3: Port 3000 is already in use
 
-### 4. Images Do Not Display
+**Possible cause:** Another application is already running on port 3000.
 
-For images inside `public/images/`, reference the public URL:
+**Solution:**
 
-```jsx
+Stop the existing development server or select another available port when prompted.
+
+### Issue 4: Application fails to compile
+
+**Possible cause:** Missing dependencies, incorrect imports, syntax errors, or incompatible package versions.
+
+**Solution:**
+
+1. Review the terminal output.
+2. Check the VS Code Problems panel.
+3. Verify component imports and file paths.
+4. Confirm that all required dependencies are installed.
+
+### Issue 5: Images or fonts are not displaying
+
+**Possible cause:** Incorrect asset paths or missing files.
+
+**Solution:**
+
+Verify that image references and font URLs point to the correct locations.
+
+For example:
+
+```javascript
 <img src="/images/nft.png" alt="NFT artwork" />
 ```
 
-For images inside `src/images/`, import the image using the correct relative path:
-
-```jsx
-import nftImage from "../../images/nftImage.jpg";
-```
-
-Ensure that the image exists at the referenced location and that the filename and extension match exactly.
-
-### 5. REST API Requests Fail
-
-If NFT data does not load:
-
-1. Open your browser's developer tools.
-2. Select the **Network** tab.
-3. Reload the application.
-4. Inspect failed API requests.
-5. Verify the endpoint, HTTP status code, and response body.
-6. Check whether the API requires authentication.
-7. Investigate CORS errors if the browser blocks cross-origin requests.
-
-An API endpoint may be unavailable even when the React application itself starts successfully.
-
-### 6. Blank Page or React Errors
-
-Open the browser's developer tools and inspect the **Console** tab.
-
-Check for:
-
-* Missing imports or modules.
-* JavaScript runtime errors.
-* Incorrect component paths.
-* Failed API requests.
-* Routing or rendering errors.
-
-Resolve the reported error and reload the application.
-
-### 7. Port 3000 Is Already in Use
-
-If another application is using port 3000, Create React App may prompt you to use another port.
-
-Accept the alternative port or stop the application using port 3000.
-
-### 8. Production Build Fails on Windows
-
-Your current build script contains:
-
-```json
-"build": "CI= react-scripts build"
-```
-
-The `CI=` syntax is not portable across Windows shells.
-
-If you need to make the script work across Windows and Unix-like environments, consider installing `cross-env`:
-
-```bash
-npm install --save-dev cross-env
-```
-
-Then update the build script in `package.json` to:
-
-```json
-"build": "cross-env CI= react-scripts build"
-```
-
-This is an optional adjustment. Before changing the script, confirm that your existing build actually fails on your Windows environment.
+For assets located inside `src`, use the appropriate relative imports.
 
 ---
 
-## Contributing
+## 11. Project Structure Overview
 
-Contributions, suggestions, and bug reports are welcome.
+The application follows a component-based React architecture.
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Make your changes.
-4. Test the application.
-5. Submit a pull request.
+| Directory/File | Description |
+|---|---|
+| `public/` | Static assets, HTML entry point, and application icons |
+| `public/images/` | Public image assets |
+| `src/components/` | Reusable React components |
+| `src/components/author/` | Author-related components |
+| `src/components/explore/` | NFT exploration components |
+| `src/components/home/` | Homepage sections and components |
+| `src/components/UI/` | Reusable interface components and loading skeletons |
+| `src/css/` | Stylesheets, fonts, Bootstrap, and icon libraries |
+| `src/images/` | Application image assets |
+| `src/pages/` | Main application pages |
+| `src/App.jsx` | Main React application component |
+| `src/index.js` | React application entry point |
+| `src/index.css` | Global application styles |
+| `package.json` | Project metadata, dependencies, and npm scripts |
+| `package-lock.json` | Exact dependency version information |
+| `README.md` | Project documentation |
 
-## License
+---
 
-This project specifies the ISC license in `package.json`. Consult the repository's licensing files and distribution terms before reusing or redistributing the code.
+## 12. Quick Start Summary
 
-## Acknowledgments
+For developers who already have Node.js and Git installed, follow these commands to get started quickly:
 
-Refer to `image-credits.txt` for image attribution information.
+```bash
+# Clone the repository
+git clone YOUR_GITHUB_REPOSITORY_URL
 
-# Getting Started with Create React App
+# Navigate into the project
+cd YOUR_PROJECT_FOLDER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Install dependencies
+npm install
 
-## Available Scripts
+# Start the development server
+npm start
+```
 
-In the project directory, you can run:
+Open your browser:
 
-### `npm start`
+```text
+http://localhost:3000
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To generate the production build:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm run build
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-## Successfully Completed Accessibility Audit on Website 
-Audited project with Lighthouse and axe DevTools and adjusted contrast, alt text, form labels, and focus states, to bring the accessibility score from the initial 78% to 100%, to ensure a smooth browsing experience for text readers and users.
-
-## Successfully Improved Performance of Website
-I ran performance audit and corrected the LCP element to take website performance from 83% to 95%.
+**You're all set!** The NFT Marketplace project should now be installed and running locally in your development environment.
